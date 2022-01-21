@@ -1,0 +1,45 @@
+{
+    "shell_cmd": "python3 \"${file}\"",
+    "selector": "source.py, source.python",
+    "working_dir": "${file_path}",
+
+    "variants":
+    [
+        {
+            "name": "Run in Terminal",
+
+            "linux": {
+                "shell_cmd": "gnome-terminal -- bash -c \"python3 '${file}' && echo && echo Press ENTER to continue && read line && exit\""
+            },
+
+            "windows":{
+                "shell_cmd": "start cmd /k python3 \"${file}\""
+            },
+
+            "osx":{
+                "shell_cmd": "open -a Terminal.app \"python3 '${file}' && echo && echo Press ENTER to continue && read line && exit\""
+                // "shell_cmd": "xterm -e \"python3 '${file}' && echo && echo Press ENTER to continue && read line && exit\"",
+            },
+
+            "shell": true
+        },
+        {
+            "name": "Test in Terminal",
+
+            "linux": {
+            	"shell_cmd": "python3 '${file}' && gnome-terminal -- bash -c \"python3 '${file_path}/.cpl_files/solution_tester.py' '${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\""
+            },
+
+            "windows":{
+                "shell_cmd": "python3 \"${file}\" && start cmd /k python \"${file_path}/.cpl_files/solution_tester.py\" \"${file_base_name}\""
+            },
+
+            "osx":{
+                "shell_cmd": "python3 '${file}' && open -a Terminal.app \"python3 '${file_path}/.cpl_files/solution_tester.py' '${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\""
+                // "shell_cmd": "python3 '${file}' && xterm -e \"python3 '${file_path}/.cpl_files/solution_tester.py' '${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\"",
+            },
+
+            "shell": true
+        }
+    ]
+}

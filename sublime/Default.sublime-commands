@@ -1,0 +1,42 @@
+[
+    {
+        "caption": "CP New",
+        "command": "cp_new"
+    },
+    {
+        "caption": "CP Set",
+        "command": "cp_set"
+    },
+    {
+        "caption": "CP Open",
+        "command": "cp_open"
+    },
+    {
+        "caption": "CP End",
+        "command": "cp_end"
+    },
+    {
+        "caption": "CP Add",
+        "command": "cp_add"
+    },
+    {
+        "caption": "CP Edit",
+        "command": "cp_edit"
+    },
+    {
+        "caption": "CP Delete",
+        "command": "cp_delete"
+    },
+    {
+        "caption": "CP Help",
+        "command": "cp_help"
+    },
+    {
+        "caption": "CP Key Bindings",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/Competitive Programming Lite/sublime/Default (${platform}).sublime-keymap",
+            "user_file": "${packages}/User/Default (${platform}).sublime-keymap"
+        }
+    }
+]

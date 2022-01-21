@@ -1,0 +1,89 @@
+[
+	{
+		"caption": "Tools",
+		"id": "tools",
+		"children": [
+			{
+				"caption": "CP Lite",
+				"id" : "cpl",
+				"mnemonic": "C",
+				"children":
+				[
+					{
+						"caption" : "CP New",
+						"command" : "cp_new",
+						"mnemonic": "N"
+					},
+					{
+						"caption" : "CP Set",
+						"command" : "cp_set",
+						"mnemonic": "S"
+					},
+					{
+						"caption" : "CP Open",
+						"command" : "cp_open",
+						"mnemonic": "O"
+					},
+					{
+						"caption" : "CP End",
+						"command" : "cp_end",
+						"mnemonic": "E"		
+					},
+					{
+						"caption" : "Templates",
+						"id" : "cplt",
+						"mnemonic": "T",
+						"children":
+						[
+							{
+								"caption" : "Add Template",
+								"command": "cp_add",
+								"mnemonic": "A"
+							},
+							{
+								"caption": "Edit Template",
+								"command": "cp_edit",
+								"mnemonic": "E"
+							},
+							{
+								"caption" : "Delete Template",
+								"command": "cp_delete",
+								"mnemonic": "D"
+							}
+						]
+					},
+					{
+						"caption" : "Help",
+						"command" : "cp_help",
+						"mnemonic": "H"
+					}
+				]	
+			}		
+		]
+	},
+	{
+		"caption": "Preferences",
+		"id": "preferences",
+		"children": [
+			{
+				"caption": "Package Settings",
+				"id": "package-settings",
+				"children": [
+					{
+						"caption": "Competitive Programming Lite",
+						"children": [
+							{
+								"caption": "Key Bindings",
+								"command": "edit_settings",
+								"args": {
+									"base_file": "${packages}/Competitive Programming Lite/sublime/Default (${platform}).sublime-keymap",
+									"user_file": "${packages}/User/Default (${platform}).sublime-keymap"
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]

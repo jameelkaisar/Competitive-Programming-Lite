@@ -1,0 +1,45 @@
+{
+    "shell_cmd": "g++ -std=c++14 \"${file}\" -o \"${file_path}/.cpl_files/${file_base_name}\" && \"${file_path}/.cpl_files/${file_base_name}\"",
+    "selector": "source.c++, source.cpp",
+    "working_dir": "${file_path}",
+
+    "variants":
+    [
+        {
+            "name": "Run in Terminal",
+
+            "linux": {
+                "shell_cmd": "g++ -std=c++14 '${file}' -o '${file_path}/.cpl_files/${file_base_name}' && gnome-terminal -- bash -c \"'${file_path}/.cpl_files/${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\""
+            },
+
+            "windows":{
+                "shell_cmd": "g++ -std=c++14 \"${file}\" -o \"${file_path}/.cpl_files/${file_base_name}\" && start cmd /k \"${file_path}/.cpl_files/${file_base_name}\""
+            },
+
+            "osx":{
+                "shell_cmd": "g++ -std=c++14 '${file}' -o '${file_path}/.cpl_files/${file_base_name}' && open -a Terminal.app \"'${file_path}/.cpl_files/${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\""
+                // "shell_cmd": "g++ -std=c++14 '${file}' -o '${file_path}/.cpl_files/${file_base_name}' && xterm -e \"'${file_path}/.cpl_files/${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\"",
+            },
+
+            "shell": true
+        },
+        {
+            "name": "Test in Terminal",
+
+            "linux": {
+            	"shell_cmd": "g++ -std=c++14 '${file}' -o '${file_path}/.cpl_files/${file_base_name}' && '${file_path}/.cpl_files/${file_base_name}' && gnome-terminal -- bash -c \"python3 '${file_path}/.cpl_files/solution_tester.py' '${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\""
+            },
+
+            "windows":{
+                "shell_cmd": "g++ -std=c++14 \"${file}\" -o \"${file_path}/.cpl_files/${file_base_name}\" && \"${file_path}/.cpl_files/${file_base_name}\" && start cmd /k python \"${file_path}/.cpl_files/solution_tester.py\" \"${file_base_name}\""
+            },
+
+            "osx":{
+                "shell_cmd": "g++ -std=c++14 '${file}' -o '${file_path}/.cpl_files/${file_base_name}' && '${file_path}/.cpl_files/${file_base_name}' && open -a Terminal.app \"python3 '${file_path}/.cpl_files/solution_tester.py' '${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\""
+                // "shell_cmd": "g++ -std=c++14 '${file}' -o '${file_path}/.cpl_files/${file_base_name}' && '${file_path}/.cpl_files/${file_base_name}' && xterm -e \"python3 '${file_path}/.cpl_files/solution_tester.py' '${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\"",
+            },
+
+            "shell": true
+        }
+    ]
+}
