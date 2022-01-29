@@ -74,6 +74,13 @@ https://user-images.githubusercontent.com/65322473/150530527-e31d3960-0c1e-43d4-
 - `Right Click -> CP Test` Test code in terminal
 - `Right Click -> CP Run` Run code in terminal
 
+## Future ideas
+- [ ] Add support for Java
+- [ ] Add support for C
+- [ ] Move reading from file and writting to file part from template to Build System
+- [ ] Add Contest Command for creating template files and scraping input and expected output for all questions in a contest
+- [ ] Add Contest Command support for CodeForces
+
 ## Changelogs
 - `Jan 21, 2022` Version 1.0.0 Released
 
