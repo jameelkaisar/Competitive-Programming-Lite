@@ -1,8 +1,8 @@
 import sys
 import os
 
-print("Competitive Coding Lite Solution Tester")
-print('"""""""""""""""""""""""""""""""""""""""')
+print("Competitive Programming Lite Solution Tester")
+print('""""""""""""""""""""""""""""""""""""""""""""')
 
 if len(sys.argv) > 1:
     t = int(sys.argv[1].split("_", 1)[0])

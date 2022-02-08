@@ -14,7 +14,7 @@ int main() {
     freopen(".cpl_files/{N}.in.txt", "r", stdin);
     freopen(".cpl_files/{N}.out.txt", "w", stdout);
     #endif
-    ll t;
+    ll t = 0;
     cin>>t;
     while (t--) solution();
     return 0;
