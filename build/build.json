@@ -1,4 +1,5 @@
 {
     "cpp": "CPL C++",
-    "py": "CPL Python"
+    "py": "CPL Python",
+    "c": "CPL C"
 }

@@ -76,7 +76,7 @@ https://user-images.githubusercontent.com/65322473/150530527-e31d3960-0c1e-43d4-
 
 ## Future ideas
 - [ ] Add support for Java
-- [ ] Add support for C
+- [x] Add support for C
 - [ ] Move reading from file and writting to file part from template to Build System
 - [ ] Add Default Command to set default Language and Template so that user does not have to select Language and Template everytime.
 - [ ] Add Contest Command for creating template files and scraping input and expected output for all questions in a contest

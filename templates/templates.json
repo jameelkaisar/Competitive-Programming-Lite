@@ -1,4 +1,5 @@
 {
     "1": ["Default", "C++", "cpp"],
-    "2": ["Default", "Python", "py"]
+    "2": ["Default", "Python", "py"],
+    "3": ["Default", "C", "c"]
 }
