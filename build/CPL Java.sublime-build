@@ -1,0 +1,45 @@
+{
+    "shell_cmd": "python3 \"${file_path}/.cpl_files/java_runner.py\" \"${file_name}\" && javac \"${file_path}/.cpl_files/Main.java\" && java -classpath \"${file_path}/.cpl_files\" \"Main\"",
+    "selector": "source.java",
+    "working_dir": "${file_path}",
+
+    "variants":
+    [
+        {
+            "name": "Run in Terminal",
+
+            "linux": {
+                "shell_cmd": "python3 '${file_path}/.cpl_files/java_runner.py' '${file_name}' && javac '${file_path}/.cpl_files/Main.java' && gnome-terminal -- bash -c \"java -classpath '${file_path}/.cpl_files' 'Main' && echo && echo Press ENTER to continue && read line && exit\""
+            },
+
+            "windows":{
+                "shell_cmd": "python3 \"${file_path}/.cpl_files/java_runner.py\" \"${file_name}\" && javac \"${file_path}/.cpl_files/Main.java\" && start cmd /k java -classpath \"${file_path}/.cpl_files\" \"Main\""
+            },
+
+            "osx":{
+                "shell_cmd": "python3 '${file_path}/.cpl_files/java_runner.py' '${file_name}' && javac '${file_path}/.cpl_files/Main.java' && open -a Terminal.app \"java -classpath '${file_path}/.cpl_files' 'Main' && echo && echo Press ENTER to continue && read line && exit\""
+                // "shell_cmd": "python3 '${file_path}/.cpl_files/java_runner.py' '${file_name}' && javac '${file_path}/.cpl_files/Main.java' && xterm -e \"java -classpath '${file_path}/.cpl_files' 'Main' && echo && echo Press ENTER to continue && read line && exit\"",
+            },
+
+            "shell": true
+        },
+        {
+            "name": "Test in Terminal",
+
+            "linux": {
+            	"shell_cmd": "python3 '${file_path}/.cpl_files/java_runner.py' '${file_name}' && javac '${file_path}/.cpl_files/Main.java' && java -classpath '${file_path}/.cpl_files' 'Main' && gnome-terminal -- bash -c \"python3 '${file_path}/.cpl_files/solution_tester.py' '${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\""
+            },
+
+            "windows":{
+                "shell_cmd": "python3 \"${file_path}/.cpl_files/java_runner.py\" \"${file_name}\" && javac \"${file_path}/.cpl_files/Main.java\" && java -classpath \"${file_path}/.cpl_files\" \"Main\" && start cmd /k python \"${file_path}/.cpl_files/solution_tester.py\" \"${file_base_name}\""
+            },
+
+            "osx":{
+                "shell_cmd": "python3 '${file_path}/.cpl_files/java_runner.py' '${file_name}' && javac '${file_path}/.cpl_files/Main.java' && java -classpath '${file_path}/.cpl_files' 'Main' && open -a Terminal.app \"python3 '${file_path}/.cpl_files/solution_tester.py' '${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\""
+                // "shell_cmd": "python3 '${file_path}/.cpl_files/java_runner.py' '${file_name}' && javac '${file_path}/.cpl_files/Main.java' && java -classpath '${file_path}/.cpl_files' 'Main' && xterm -e \"python3 '${file_path}/.cpl_files/solution_tester.py' '${file_base_name}' && echo && echo Press ENTER to continue && read line && exit\"",
+            },
+
+            "shell": true
+        }
+    ]
+}

@@ -46,6 +46,10 @@ class CpNewCommand(sublime_plugin.TextCommand):
         with open(os.path.join(plugin_path, "files/solution_tester.py"), "r") as f:
             solution_tester = f.read().strip()
 
+        # Java Runner Code
+        with open(os.path.join(plugin_path, "files/java_runner.py"), "r") as f:
+            java_runner = f.read().strip()
+
         # Language Template Code
         template_name = language_templates[template][0]
         language_extension = language_templates[template][2]
@@ -55,6 +59,10 @@ class CpNewCommand(sublime_plugin.TextCommand):
         # Creating Solution Tester File
         with open(os.path.join(project_path, ".cpl_files/solution_tester.py"), "w") as f:
             f.write(solution_tester)
+
+        # Creating Java Runner File
+        with open(os.path.join(project_path, ".cpl_files/java_runner.py"), "w") as f:
+            f.write(java_runner)
 
         # Generating CP Files
         if (os.path.exists(os.path.join(project_path, "{0}_{1}.{2}".format(question, template_name, language_extension)))):
@@ -155,6 +163,10 @@ class CpSetCommand(sublime_plugin.TextCommand):
         with open(os.path.join(plugin_path, "files/solution_tester.py"), "r") as f:
             solution_tester = f.read().strip()
 
+        # Java Runner Code
+        with open(os.path.join(plugin_path, "files/java_runner.py"), "r") as f:
+            java_runner = f.read().strip()
+
         # Language Template Code
         template_name = language_templates[template][0]
         language_extension = language_templates[template][2]
@@ -164,6 +176,10 @@ class CpSetCommand(sublime_plugin.TextCommand):
         # Creating Solution Tester File
         with open(os.path.join(project_path, ".cpl_files/solution_tester.py"), "w") as f:
             f.write(solution_tester)
+
+        # Creating Java Runner File
+        with open(os.path.join(project_path, ".cpl_files/java_runner.py"), "w") as f:
+            f.write(java_runner)
 
         # Generating CP Files
         override_flag = False
