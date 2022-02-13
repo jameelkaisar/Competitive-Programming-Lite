@@ -1,6 +1,7 @@
 # Importing Required Libraries
 import sublime_plugin
 import sublime
+import shutil
 import json
 import os
 
@@ -42,27 +43,19 @@ class CpNewCommand(sublime_plugin.TextCommand):
         [v.run_command("save") if v.file_name() else v.erase(edit, sublime.Region(0, v.size())) for v in project_window.views()]
         project_window.run_command("close_all")
 
-        # Solution Tester Code
-        with open(os.path.join(plugin_path, "files/solution_tester.py"), "r") as f:
-            solution_tester = f.read().strip()
+        # Copying Solution Tester File
+        if not (os.path.exists(os.path.join(project_path, ".cpl_files/solution_tester.py"))):
+            shutil.copyfile(os.path.join(plugin_path, "files/solution_tester.py"), os.path.join(project_path, ".cpl_files/solution_tester.py"))
 
-        # Java Runner Code
-        with open(os.path.join(plugin_path, "files/java_runner.py"), "r") as f:
-            java_runner = f.read().strip()
+        # Copying Java Runner File
+        if not (os.path.exists(os.path.join(project_path, ".cpl_files/java_runner.py"))):
+            shutil.copyfile(os.path.join(plugin_path, "files/java_runner.py"), os.path.join(project_path, ".cpl_files/java_runner.py"))
 
         # Language Template Code
         template_name = language_templates[template][0]
         language_extension = language_templates[template][2]
         with open(os.path.join(plugin_path, "templates/{0}.{1}".format(template_name, language_extension)), "r") as f:
             language_template = f.read()
-
-        # Creating Solution Tester File
-        with open(os.path.join(project_path, ".cpl_files/solution_tester.py"), "w") as f:
-            f.write(solution_tester)
-
-        # Creating Java Runner File
-        with open(os.path.join(project_path, ".cpl_files/java_runner.py"), "w") as f:
-            f.write(java_runner)
 
         # Generating CP Files
         if (os.path.exists(os.path.join(project_path, "{0}_{1}.{2}".format(question, template_name, language_extension)))):
@@ -110,6 +103,7 @@ class CpNewCommand(sublime_plugin.TextCommand):
         # Deleting Old File if Both Menu Files Exist After Version Update
         if context_menu and disabled_menu:
             os.remove(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
+            os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
         # Renaming Menu File
         if not context_menu:
             os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
@@ -159,27 +153,19 @@ class CpSetCommand(sublime_plugin.TextCommand):
         [v.run_command("save") if v.file_name() else v.erase(edit, sublime.Region(0, v.size())) for v in project_window.views()]
         project_window.run_command("close_all")
 
-        # Solution Tester Code
-        with open(os.path.join(plugin_path, "files/solution_tester.py"), "r") as f:
-            solution_tester = f.read().strip()
+        # Copying Solution Tester File
+        if not (os.path.exists(os.path.join(project_path, ".cpl_files/solution_tester.py"))):
+            shutil.copyfile(os.path.join(plugin_path, "files/solution_tester.py"), os.path.join(project_path, ".cpl_files/solution_tester.py"))
 
-        # Java Runner Code
-        with open(os.path.join(plugin_path, "files/java_runner.py"), "r") as f:
-            java_runner = f.read().strip()
+        # Copying Java Runner File
+        if not (os.path.exists(os.path.join(project_path, ".cpl_files/java_runner.py"))):
+            shutil.copyfile(os.path.join(plugin_path, "files/java_runner.py"), os.path.join(project_path, ".cpl_files/java_runner.py"))
 
         # Language Template Code
         template_name = language_templates[template][0]
         language_extension = language_templates[template][2]
         with open(os.path.join(plugin_path, "templates/{0}.{1}".format(template_name, language_extension)), "r") as f:
             language_template = f.read()
-
-        # Creating Solution Tester File
-        with open(os.path.join(project_path, ".cpl_files/solution_tester.py"), "w") as f:
-            f.write(solution_tester)
-
-        # Creating Java Runner File
-        with open(os.path.join(project_path, ".cpl_files/java_runner.py"), "w") as f:
-            f.write(java_runner)
 
         # Generating CP Files
         override_flag = False
@@ -232,6 +218,7 @@ class CpSetCommand(sublime_plugin.TextCommand):
         # Deleting Old File if Both Menu Files Exist After Version Update
         if context_menu and disabled_menu:
             os.remove(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
+            os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
         # Renaming Menu File
         if not context_menu:
             os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
@@ -323,6 +310,7 @@ class CpOpenCommand(sublime_plugin.TextCommand):
         # Deleting Old File if Both Menu Files Exist After Version Update
         if context_menu and disabled_menu:
             os.remove(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
+            os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
         # Renaming Menu File
         if not context_menu:
             os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
