@@ -94,20 +94,6 @@ class CpNewCommand(sublime_plugin.TextCommand):
             build_systems = json.load(f)
         project_window.run_command("set_build_system", {"file": "Packages/{0}/build/{1}.sublime-build".format(plugin_folder, build_systems[language_templates[template][2]])})
 
-        # Enabling Context Menu
-        # Renaming "Context.sublime-menu" file because as of now there exists no way to find current build system
-        # Using something like view.settings().get("build_system") in "is_visible()" does not work
-        # https://forum.sublimetext.com/t/getting-the-current-build-system/5886
-        context_menu = os.path.exists(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-        disabled_menu = os.path.exists(os.path.join(plugin_path, "sublime/Context.disabled-menu"))
-        # Deleting Old File if Both Menu Files Exist After Version Update
-        if context_menu and disabled_menu:
-            os.remove(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-            os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-        # Renaming Menu File
-        if not context_menu:
-            os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-
     # Getting Question Nummber and Template Input
     def input(self, args):
         if "question" not in args:
@@ -209,20 +195,6 @@ class CpSetCommand(sublime_plugin.TextCommand):
             build_systems = json.load(f)
         project_window.run_command("set_build_system", {"file": "Packages/{0}/build/{1}.sublime-build".format(plugin_folder, build_systems[language_templates[template][2]])})
 
-        # Enabling Context Menu
-        # Renaming "Context.sublime-menu" file because as of now there exists no way to find current build system
-        # Using something like view.settings().get("build_system") in "is_visible()" does not work
-        # https://forum.sublimetext.com/t/getting-the-current-build-system/5886
-        context_menu = os.path.exists(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-        disabled_menu = os.path.exists(os.path.join(plugin_path, "sublime/Context.disabled-menu"))
-        # Deleting Old File if Both Menu Files Exist After Version Update
-        if context_menu and disabled_menu:
-            os.remove(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-            os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-        # Renaming Menu File
-        if not context_menu:
-            os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-
     # Getting Total Questions and Template Input
     def input(self, args):
         if "questions" not in args:
@@ -301,20 +273,6 @@ class CpOpenCommand(sublime_plugin.TextCommand):
             build_systems = json.load(f)
         project_window.run_command("set_build_system", {"file": "Packages/{0}/build/{1}.sublime-build".format(plugin_folder, build_systems[language_templates[template][2]])})
 
-        # Enabling Context Menu
-        # Renaming "Context.sublime-menu" file because as of now there exists no way to find current build system
-        # Using something like view.settings().get("build_system") in "is_visible()" does not work
-        # https://forum.sublimetext.com/t/getting-the-current-build-system/5886
-        context_menu = os.path.exists(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-        disabled_menu = os.path.exists(os.path.join(plugin_path, "sublime/Context.disabled-menu"))
-        # Deleting Old File if Both Menu Files Exist After Version Update
-        if context_menu and disabled_menu:
-            os.remove(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-            os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-        # Renaming Menu File
-        if not context_menu:
-            os.rename(os.path.join(plugin_path, "sublime/Context.disabled-menu"), os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-
     # Getting Question Nummber and Template Input
     def input(self, args):
         if "question" not in args:
@@ -342,19 +300,6 @@ class CpEndCommand(sublime_plugin.TextCommand):
 
         # Changing Build System
         project_window.run_command("set_build_system", {"file": ""})
-
-        # Disabling Context Menu
-        # Renaming "Context.sublime-menu" file because as of now there exists no way to find current build system
-        # Using something like view.settings().get("build_system") in "is_visible()" does not work
-        # https://forum.sublimetext.com/t/getting-the-current-build-system/5886
-        context_menu = os.path.exists(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-        disabled_menu = os.path.exists(os.path.join(plugin_path, "sublime/Context.disabled-menu"))
-        # Deleting Old File if Both Menu Files Exist After Version Update
-        if context_menu and disabled_menu:
-            os.remove(os.path.join(plugin_path, "sublime/Context.sublime-menu"))
-        # Renaming Menu File
-        if not disabled_menu:
-            os.rename(os.path.join(plugin_path, "sublime/Context.sublime-menu"), os.path.join(plugin_path, "sublime/Context.disabled-menu"))
 
 
 # Command for Adding a Template
