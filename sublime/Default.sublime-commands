@@ -30,13 +30,5 @@
     {
         "caption": "CP Help",
         "command": "cp_help"
-    },
-    {
-        "caption": "CP Key Bindings",
-        "command": "edit_settings",
-        "args": {
-            "base_file": "${packages}/Competitive Programming Lite/sublime/Default (${platform}).sublime-keymap",
-            "user_file": "${packages}/User/Default (${platform}).sublime-keymap"
-        }
     }
 ]
