@@ -6,13 +6,74 @@ import json
 import os
 
 
+# Initilise Plugin
+def plugin_init():
+    sublime_path = os.path.dirname(sublime.packages_path())
+    sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+    plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+    os.makedirs(plugin_data_path, exist_ok=True)
+
+    # Copy the Default Files
+    if not os.path.exists(os.path.join(plugin_data_path, ".cpl_init")):
+        # Build Folder
+        plugin_build_path = os.path.join(plugin_data_path, "build")
+        os.makedirs(plugin_build_path, exist_ok=True)
+        for f in sublime.find_resources("*"):
+            if f.startswith("Packages/Competitive Programming Lite/build/"):
+                content = sublime.load_binary_resource(f)
+                f_name = f.replace("Packages/Competitive Programming Lite/build/", "")
+                if f.endswith(".build-json"):
+                    f_name =  f_name[:-11] + ".sublime-build"
+                with open(os.path.join(plugin_build_path, f_name), "wb") as f:
+                    f.write(content)
+
+        # Files Folder
+        plugin_files_path = os.path.join(plugin_data_path, "files")
+        os.makedirs(plugin_files_path, exist_ok=True)
+        for f in sublime.find_resources("*"):
+            if f.startswith("Packages/Competitive Programming Lite/files/"):
+                content = sublime.load_binary_resource(f)
+                f_name = f.replace("Packages/Competitive Programming Lite/files/", "")
+                with open(os.path.join(plugin_files_path, f_name), "wb") as f:
+                    f.write(content)
+
+        # Languages Folder
+        plugin_languages_path = os.path.join(plugin_data_path, "languages")
+        os.makedirs(plugin_languages_path, exist_ok=True)
+        for f in sublime.find_resources("*"):
+            if f.startswith("Packages/Competitive Programming Lite/languages/"):
+                content = sublime.load_binary_resource(f)
+                f_name = f.replace("Packages/Competitive Programming Lite/languages/", "")
+                with open(os.path.join(plugin_languages_path, f_name), "wb") as f:
+                    f.write(content)
+
+        # Templates Folder
+        plugin_templates_path = os.path.join(plugin_data_path, "templates")
+        os.makedirs(plugin_templates_path, exist_ok=True)
+        for f in sublime.find_resources("*"):
+            if f.startswith("Packages/Competitive Programming Lite/templates/"):
+                content = sublime.load_binary_resource(f)
+                f_name = f.replace("Packages/Competitive Programming Lite/templates/", "")
+                with open(os.path.join(plugin_templates_path, f_name), "wb") as f:
+                    f.write(content)
+        
+        # Successfully Initialized
+        with open(os.path.join(plugin_data_path, ".cpl_init"), "w") as f:
+            f.write("Do not delete this file")
+
+
 # Command for Creating a File
 class CpNewCommand(sublime_plugin.TextCommand):
     # Default run Command
     def run(self, edit, question, template):
-        plugin_path = os.path.dirname(os.path.abspath(__file__))
-        plugin_folder = os.path.basename(plugin_path)
+        plugin_init()
+
+        sublime_path = os.path.dirname(sublime.packages_path())
+        sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+        plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+        plugin_path = plugin_data_path
         project_window = sublime.active_window()
+
         try:
             project_path = project_window.project_data()["folders"][0]["path"]
         except:
@@ -92,7 +153,8 @@ class CpNewCommand(sublime_plugin.TextCommand):
         # Changing Build System
         with open(os.path.join(plugin_path, "build/build.json"), "r") as f:
             build_systems = json.load(f)
-        project_window.run_command("set_build_system", {"file": "Packages/{0}/build/{1}.sublime-build".format(plugin_folder, build_systems[language_templates[template][2]])})
+
+        project_window.run_command("set_build_system", {"file": "Packages/User/Competitive Programming Lite/build/{0}.sublime-build".format(build_systems[language_templates[template][2]])})
 
     # Getting Question Nummber and Template Input
     def input(self, args):
@@ -106,9 +168,14 @@ class CpNewCommand(sublime_plugin.TextCommand):
 class CpSetCommand(sublime_plugin.TextCommand):
     # Default run Command
     def run(self, edit, questions, template):
-        plugin_path = os.path.dirname(os.path.abspath(__file__))
-        plugin_folder = os.path.basename(plugin_path)
+        plugin_init()
+
+        sublime_path = os.path.dirname(sublime.packages_path())
+        sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+        plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+        plugin_path = plugin_data_path
         project_window = sublime.active_window()
+
         try:
             project_path = project_window.project_data()["folders"][0]["path"]
         except:
@@ -193,7 +260,7 @@ class CpSetCommand(sublime_plugin.TextCommand):
         # Changing Build System
         with open(os.path.join(plugin_path, "build/build.json"), "r") as f:
             build_systems = json.load(f)
-        project_window.run_command("set_build_system", {"file": "Packages/{0}/build/{1}.sublime-build".format(plugin_folder, build_systems[language_templates[template][2]])})
+        project_window.run_command("set_build_system", {"file": "Packages/User/Competitive Programming Lite/build/{0}.sublime-build".format(build_systems[language_templates[template][2]])})
 
     # Getting Total Questions and Template Input
     def input(self, args):
@@ -207,9 +274,14 @@ class CpSetCommand(sublime_plugin.TextCommand):
 class CpOpenCommand(sublime_plugin.TextCommand):
     # Default run Command
     def run(self, edit, question, template):
-        plugin_path = os.path.dirname(os.path.abspath(__file__))
-        plugin_folder = os.path.basename(plugin_path)
+        plugin_init()
+
+        sublime_path = os.path.dirname(sublime.packages_path())
+        sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+        plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+        plugin_path = plugin_data_path
         project_window = sublime.active_window()
+
         try:
             project_path = project_window.project_data()["folders"][0]["path"]
         except:
@@ -271,7 +343,7 @@ class CpOpenCommand(sublime_plugin.TextCommand):
         # Changing Build System
         with open(os.path.join(plugin_path, "build/build.json"), "r") as f:
             build_systems = json.load(f)
-        project_window.run_command("set_build_system", {"file": "Packages/{0}/build/{1}.sublime-build".format(plugin_folder, build_systems[language_templates[template][2]])})
+        project_window.run_command("set_build_system", {"file": "Packages/User/Competitive Programming Lite/build/{0}.sublime-build".format(build_systems[language_templates[template][2]])})
 
     # Getting Question Nummber and Template Input
     def input(self, args):
@@ -285,7 +357,13 @@ class CpOpenCommand(sublime_plugin.TextCommand):
 class CpEndCommand(sublime_plugin.TextCommand):
     # Default run Command
     def run(self, edit):
-        plugin_path = os.path.dirname(os.path.abspath(__file__))
+        plugin_init()
+
+        sublime_path = os.path.dirname(sublime.packages_path())
+        sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+        plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+        plugin_path = plugin_data_path
+
         project_window = sublime.active_window()
 
         # Closing All Tabs
@@ -306,7 +384,12 @@ class CpEndCommand(sublime_plugin.TextCommand):
 class CpAddCommand(sublime_plugin.TextCommand):
     # Default run Command
     def run(self, edit, language, name):
-        plugin_path = os.path.dirname(os.path.abspath(__file__))
+        plugin_init()
+
+        sublime_path = os.path.dirname(sublime.packages_path())
+        sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+        plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+        plugin_path = plugin_data_path
         project_window = sublime.active_window()
 
         # Handling Input Values
@@ -361,7 +444,13 @@ class CpAddCommand(sublime_plugin.TextCommand):
 class CpEditCommand(sublime_plugin.TextCommand):
     # Default run Command
     def run(self, edit, template):
-        plugin_path = os.path.dirname(os.path.abspath(__file__))
+        plugin_init()
+
+        sublime_path = os.path.dirname(sublime.packages_path())
+        sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+        plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+        plugin_path = plugin_data_path
+
         project_window = sublime.active_window()
 
         # Handling Input Values
@@ -389,7 +478,12 @@ class CpEditCommand(sublime_plugin.TextCommand):
 class CpDeleteCommand(sublime_plugin.TextCommand):
     # Default run Command
     def run(self, edit, template):
-        plugin_path = os.path.dirname(os.path.abspath(__file__))
+        plugin_init()
+
+        sublime_path = os.path.dirname(sublime.packages_path())
+        sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+        plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+        plugin_path = plugin_data_path
 
         # Handling Input Values
         with open(os.path.join(plugin_path, "templates/templates.json"), "r") as f:
@@ -460,7 +554,13 @@ class QuestionInputHandler(sublime_plugin.TextInputHandler):
 # Handler for Getting Template Input
 class TemplateInputHandler(sublime_plugin.ListInputHandler):
     def __init__(self):
-        plugin_path = os.path.dirname(os.path.abspath(__file__))
+        plugin_init()
+
+        sublime_path = os.path.dirname(sublime.packages_path())
+        sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+        plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+        plugin_path = plugin_data_path
+
         with open(os.path.join(plugin_path, "templates/templates.json"), "r") as f:
             language_templates = json.load(f)
         self.templates = {i: "{0} ({1})".format(j[0], j[1]) for i, j in language_templates.items()}
@@ -477,7 +577,13 @@ class TemplateInputHandler(sublime_plugin.ListInputHandler):
 # Handler for Getting Template Input (No Default)
 class TemplateInputHandlerND(sublime_plugin.ListInputHandler):
     def __init__(self):
-        plugin_path = os.path.dirname(os.path.abspath(__file__))
+        plugin_init()
+
+        sublime_path = os.path.dirname(sublime.packages_path())
+        sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+        plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+        plugin_path = plugin_data_path
+
         with open(os.path.join(plugin_path, "templates/templates.json"), "r") as f:
             language_templates = json.load(f)
         self.templates = {i: "{0} ({1})".format(j[0], j[1]) for i, j in language_templates.items() if j[0] != "Default"}
@@ -494,7 +600,13 @@ class TemplateInputHandlerND(sublime_plugin.ListInputHandler):
 # Handler for Getting Language Input
 class LanguageInputHandler(sublime_plugin.ListInputHandler):
     def __init__(self):
-        plugin_path = os.path.dirname(os.path.abspath(__file__))
+        plugin_init()
+
+        sublime_path = os.path.dirname(sublime.packages_path())
+        sublime_user_path = os.path.join(sublime_path, "Packages", "User")
+        plugin_data_path = os.path.join(sublime_user_path, "Competitive Programming Lite")
+        plugin_path = plugin_data_path
+
         with open(os.path.join(plugin_path, "languages/languages.json"), "r") as f:
             languages = json.load(f)
         self.languages = {i: j[0] for i, j in languages.items()}
