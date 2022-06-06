@@ -59,28 +59,5 @@
 				]	
 			}		
 		]
-	},
-	{
-		"id": "preferences",
-		"children": [
-			{
-				"id": "package-settings",
-				"children": [
-					{
-						"caption": "Competitive Programming Lite",
-						"children": [
-							{
-								"caption": "Key Bindings",
-								"command": "edit_settings",
-								"args": {
-									"base_file": "${packages}/Competitive Programming Lite/sublime/Default (${platform}).sublime-keymap",
-									"user_file": "${packages}/User/Default (${platform}).sublime-keymap"
-								}
-							}
-						]
-					}
-				]
-			}
-		]
 	}
 ]
