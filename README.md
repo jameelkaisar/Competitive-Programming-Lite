@@ -9,11 +9,8 @@ A simple, easy-to-use Sublime Text plugin to assist in Competitive Programming.
 - `CP Add` Add a template
 - `CP Edit` Edit a template
 - `CP Delete` Delete a template
+- `CP Key Bindings` Set key bindings
 - `CP Help` Open help page
-
-## Context Menu Commands
-- `CP Test` Test code in terminal
-- `CP Run` Run code in terminal
 
 ## Platforms Supported
 - Linux
@@ -55,7 +52,8 @@ https://user-images.githubusercontent.com/65322473/153870475-9b68e2d5-f2b1-4a04-
 ### Deleting a template
 https://user-images.githubusercontent.com/65322473/153870527-6d9d3a3e-6967-4b05-a1cb-51633946b428.mp4
 
-### Shortcut keys
+### Key bindings
+These are the recommended key bindings. However you can set your own key bindings as well. To set key bindings, run `CP Key Bindings` command or goto `Tools -> CP Lite -> Settings -> Key Bindings`
 - **Linux**
   - <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> Create a new file
   - <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> Create a set of files
@@ -71,10 +69,6 @@ https://user-images.githubusercontent.com/65322473/153870527-6d9d3a3e-6967-4b05-
   - <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> Create a set of files
   - <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> Open a file
   - <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> Exit CP mode
-
-### Shortcut menu
-- `Right Click -> CP Test` Test code in terminal
-- `Right Click -> CP Run` Run code in terminal
 
 ## Future ideas
 - [ ] Remove dependency on ONLINE_JUDGE. Define CPL_JUDGE locally.
