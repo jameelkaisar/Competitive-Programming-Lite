@@ -28,11 +28,11 @@
         "command": "cp_delete"
     },
     {
-        "caption": "CP Help",
-        "command": "cp_help"
-    },
-    {
         "caption": "CP Key Bindings",
         "command": "cp_key_bindings"
+    },
+    {
+        "caption": "CP Help",
+        "command": "cp_help"
     }
 ]
