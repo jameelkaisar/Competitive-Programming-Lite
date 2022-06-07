@@ -80,4 +80,5 @@ These are the recommended key bindings. However you can set your own key binding
 ## Changelogs
 - `Jan 21, 2022` Version 1.0.0 Released
 - `Feb 14, 2022` Version 1.1.0 Released
+- `Jun 07, 2022` Version 1.2.0 Released
 
