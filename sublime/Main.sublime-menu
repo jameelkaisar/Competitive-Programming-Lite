@@ -52,12 +52,44 @@
 						]
 					},
 					{
+						"caption" : "Settings",
+						"id" : "cpls",
+						"mnemonic": "G",
+						"children":
+						[
+							{
+								"caption" : "Key Bindings",
+								"command": "cp_key_bindings",
+								"mnemonic": "K"
+							}
+						]
+					},
+					{
 						"caption" : "Help",
 						"command" : "cp_help",
 						"mnemonic": "H"
 					}
 				]	
 			}		
+		]
+	},
+	{
+		"id": "preferences",
+		"children": [
+			{
+				"id": "package-settings",
+				"children": [
+					{
+						"caption": "Competitive Programming Lite",
+						"children": [
+							{
+								"caption" : "Key Bindings",
+								"command": "cp_key_bindings",
+							}
+						]
+					}
+				]
+			}
 		]
 	}
 ]

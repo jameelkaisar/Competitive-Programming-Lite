@@ -1,0 +1,13 @@
+[
+    // Key Binding for creating a file (CP New)
+    // { "keys": ["alt+shift+n"], "command": "cp_new" },
+
+    // Key Binding for creating a set of file (CP Set)
+    // { "keys": ["alt+shift+s"], "command": "cp_set" },
+
+    // Key Binding for opening a file (CP Open)
+    // { "keys": ["alt+shift+o"], "command": "cp_open" },
+
+    // Key Binding for exiting CP mode (CP End)
+    // { "keys": ["alt+shift+e"], "command": "cp_end" },
+]

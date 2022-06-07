@@ -46,6 +46,10 @@ def plugin_init():
                 f_name = f.replace("Packages/Competitive Programming Lite/languages/", "")
                 with open(os.path.join(plugin_languages_path, f_name), "wb") as f:
                     f.write(content)
+        
+        # Sublime Folder
+        plugin_sublime_path = os.path.join(plugin_data_path, "sublime")
+        os.makedirs(plugin_sublime_path, exist_ok=True)
 
         # Templates Folder
         plugin_templates_path = os.path.join(plugin_data_path, "templates")
@@ -515,6 +519,20 @@ class CpDeleteCommand(sublime_plugin.TextCommand):
     def input(self, args):
         if "template" not in args:
             return TemplateInputHandlerND()
+
+
+# Command for Setting Key Bindings
+class CpKeyBindingsCommand(sublime_plugin.TextCommand):
+    # Default run Command
+    def run(self, edit):
+        plugin_init()
+
+        project_window = sublime.active_window()
+        project_window.run_command("edit_settings", {
+            "base_file": "${packages}/Competitive Programming Lite/sublime/Default ($platform).sublime-keymap",
+            "user_file": "${packages}/User/Competitive Programming Lite/sublime/Default ($platform).sublime-keymap",
+            "default": "[\n\t$0\n]\n"
+        })
 
 
 # Command for Opening Help Page
